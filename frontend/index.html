@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Cinematic, editorial Ethereum Wallet Explorer. Real-time balance and on-chain ledger telemetry powered by Etherscan API."
+  >
+
+  <title>Ethereum / Wallet Explorer — On-Chain Telemetry</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="editorial-body">
+
+  <!-- ================================================================
+       ATMOSPHERIC BACKGROUND
+       ================================================================ -->
+
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <div
+    class="bg-depth-layer bg-layer-1"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="bg-depth-layer bg-layer-2"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="ambient-coordinate-label"
+    aria-hidden="true"
+  >
+    <span>ETHEREUM MAINNET // PROTOCOL 0x01</span>
+    <span>LEDGER TELEMETRY [LIVE]</span>
+  </div>
+
+
+  <!-- ================================================================
+       STICKY NAVIGATION
+       ================================================================ -->
+
+  <header class="editorial-nav" id="topNav">
+
+    <div class="nav-container">
+
+      <a href="#hero" class="nav-brand">
+        <span class="nav-brand-prefix">ETHEREUM</span>
+        <span class="nav-brand-sep">/</span>
+        <span class="nav-brand-sub">EXPLORER</span>
+      </a>
+
+      <nav class="nav-links">
+
+        <a
+          href="#searchSection"
+          class="nav-link"
+        >
+          WALLET
+        </a>
+
+        <a
+          href="#resultsSection"
+          class="nav-link"
+        >
+          TRANSACTIONS
+        </a>
+
+        <a
+          href="#aboutSection"
+          class="nav-link"
+        >
+          ABOUT
+        </a>
+
+      </nav>
+
+      <div class="nav-status-indicator">
+
+        <span
+          class="status-pulse-dot"
+          aria-hidden="true"
+        ></span>
+
+        <span class="status-label">
+          MAINNET ACTIVE
+        </span>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================================================================
+       HERO
+       ================================================================ -->
+
+  <section
+    class="hero-section"
+    id="hero"
+  >
+
+    <div class="hero-container">
+
+      <div class="hero-eyebrow animate-reveal">
+
+        <span class="eyebrow-rule"></span>
+
+        <span class="eyebrow-text">
+          ON-CHAIN DATA / ETHEREUM
+        </span>
+
+      </div>
+
+
+      <h1 class="hero-heading animate-reveal">
+
+        <span class="hero-line hero-line-main">
+          Ethereum
+        </span>
+
+        <span class="hero-line hero-line-italic">
+          Wallet Explorer
+        </span>
+
+      </h1>
+
+
+      <p class="hero-subtitle animate-reveal">
+        Explore public wallet activity, transactions, and on-chain
+        movement across the decentralized ledger.
+      </p>
+
+
+      <a
+        href="#searchSection"
+        class="hero-scroll-indicator animate-reveal"
+        aria-label="Scroll to wallet search"
+      >
+
+        <span class="scroll-text">
+          SCROLL
+        </span>
+
+        <span class="scroll-arrow">
+          &darr;
+        </span>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================================================================
+       MAIN CONTENT
+       ================================================================ -->
+
+  <main class="editorial-main">
+
+
+    <!-- ============================================================
+         01 / WALLET QUERY
+         ============================================================ -->
+
+    <div
+      class="section-divider-bar"
+      id="searchSection"
+    >
+
+      <div class="divider-content">
+
+        <span class="divider-tag">
+          01 / WALLET QUERY
+        </span>
+
+        <div class="divider-line"></div>
+
+        <span class="divider-meta">
+          INPUT PUBLIC KEY
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- SEARCH -->
+    <section
+      class="search-editorial-section animate-on-scroll"
+      aria-label="Wallet Search"
+    >
+
+      <div class="search-wrapper-card">
+
+        <form
+          class="search-form"
+          id="searchForm"
+          novalidate
+        >
+
+          <div class="search-field-group">
+
+            <label
+              for="addressInput"
+              class="search-field-label"
+            >
+              ENTER PUBLIC ETHEREUM ADDRESS
+            </label>
+
+
+            <div class="search-input-shell">
+
+              <input
+                type="text"
+                id="addressInput"
+                class="search-input"
+                placeholder="0x..."
+                aria-label="Enter Ethereum wallet address"
+                spellcheck="false"
+                autocomplete="off"
+                required
+              >
+
+
+              <button
+                type="button"
+                id="clearBtn"
+                class="clear-btn"
+                aria-label="Clear address input"
+                title="Clear input"
+              >
+
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  aria-hidden="true"
+                >
+                  <line
+                    x1="18"
+                    y1="6"
+                    x2="6"
+                    y2="18"
+                  ></line>
+
+                  <line
+                    x1="6"
+                    y1="6"
+                    x2="18"
+                    y2="18"
+                  ></line>
+                </svg>
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- ACTIONS -->
+
+          <div class="search-actions-bar">
+
+            <div class="security-note">
+
+              <span class="security-tag">
+                SECURITY /
+              </span>
+
+              <span class="security-text">
+                Only enter a public wallet address.
+                Never enter your private key or seed phrase.
+              </span>
+
+            </div>
+
+
+            <button
+              type="submit"
+              id="searchBtn"
+              class="btn-editorial-submit"
+            >
+
+              <span class="btn-label">
+                ANALYZE WALLET
+              </span>
+
+              <span
+                class="btn-arrow"
+                aria-hidden="true"
+              >
+                &rarr;
+              </span>
+
+            </button>
+
+          </div>
+
+
+          <!-- CURATED ADDRESSES -->
+
+          <div class="quick-picks-editorial">
+
+            <span class="quick-picks-label">
+              CURATED ADDRESSES:
+            </span>
+
+            <div class="quick-chips-group">
+
+              <button
+                type="button"
+                class="chip-btn"
+                data-address="0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+              >
+                vitalik.eth (Vitalik)
+              </button>
+
+              <button
+                type="button"
+                class="chip-btn"
+                data-address="0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe"
+              >
+                Ethereum Foundation
+              </button>
+
+              <button
+                type="button"
+                class="chip-btn"
+                data-address="0x1F98431c8aD98523631AE4a59f267346ea31F984"
+              >
+                Uniswap V3 Factory
+              </button>
+
+            </div>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </section>
+
+
+    <!-- ============================================================
+         FEEDBACK STATES
+         ============================================================ -->
+
+    <div class="state-container">
+
+
+      <!-- ERROR -->
+
+      <div
+        id="errorState"
+        class="error-state"
+        role="alert"
+      >
+
+        <div class="error-content">
+
+          <div class="error-indicator">
+
+            <span class="error-badge">
+              ERROR /
+            </span>
+
+            <span
+              class="error-heading"
+              id="errorHeading"
+            >
+              INVALID ADDRESS
+            </span>
+
+          </div>
+
+          <div
+            id="errorMessage"
+            class="error-message"
+          >
+            The address entered does not appear to be a valid Ethereum wallet address.
+          </div>
+
+        </div>
+
+
+        <button
+          type="button"
+          id="errorCloseBtn"
+          class="error-close-btn"
+          aria-label="Dismiss error"
+        >
+          <span>&times;</span>
+        </button>
+
+      </div>
+
+
+      <!-- LOADING -->
+
+      <div
+        id="loadingState"
+        class="loading-state"
+      >
+
+        <div class="loading-editorial-container">
+
+          <div class="loading-eyebrow">
+            LEDGER TELEMETRY IN PROGRESS
+          </div>
+
+          <h2 class="loading-title">
+            ANALYZING WALLET
+          </h2>
+
+          <div class="loading-bar-track">
+            <div class="loading-bar-progress"></div>
+          </div>
+
+          <p
+            id="loadingSubtext"
+            class="loading-subtitle"
+          >
+            Querying Ethereum blockchain via backend service...
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- EMPTY -->
+
+      <div
+        id="emptyState"
+        class="empty-state"
+      >
+
+        <div class="empty-editorial-box">
+
+          <div class="empty-micro">
+            STATUS // IDLE
+          </div>
+
+          <h2 class="empty-title">
+            Awaiting Query
+          </h2>
+
+          <p class="empty-desc">
+            Enter an Ethereum wallet address above to explore
+            its balance, nonce, and on-chain transaction history.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ============================================================
+         RESULTS
+         ============================================================ -->
+
+    <div
+      id="resultsSection"
+      class="results-section"
+    >
+
+
+      <!-- WALLET OVERVIEW -->
+
+      <div class="section-divider-bar">
+
+        <div class="divider-content">
+
+          <span class="divider-tag">
+            02 / WALLET OVERVIEW
+          </span>
+
+          <div class="divider-line"></div>
+
+          <span class="divider-meta">
+            TELEMETRY &amp; HOLDINGS
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <section
+        class="overview-grid"
+        aria-label="Wallet Overview Statistics"
+      >
+
+
+        <!-- BALANCE -->
+
+        <article class="overview-block">
+
+          <div class="overview-meta">
+
+            <span class="overview-index">
+              01
+            </span>
+
+            <span class="overview-label">
+              ETH BALANCE
+            </span>
+
+          </div>
+
+
+          <div class="overview-value-wrap">
+
+            <div class="overview-value">
+
+              <span id="ethBalanceValue">
+                0
+              </span>
+
+              <span class="overview-unit">
+                ETH
+              </span>
+
+            </div>
+
+            <div
+              id="ethBalanceWei"
+              class="overview-subtext"
+              title="Exact amount in Wei"
+            >
+              0 Wei
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- TRANSACTIONS -->
+
+        <article class="overview-block">
+
+          <div class="overview-meta">
+
+            <span class="overview-index">
+              02
+            </span>
+
+            <span class="overview-label">
+              TRANSACTIONS
+            </span>
+
+          </div>
+
+
+          <div class="overview-value-wrap">
+
+            <div class="overview-value">
+
+              <span id="txCountValue">
+                0
+              </span>
+
+            </div>
+
+            <div class="overview-subtext">
+              TOTAL OUTGOING NONCE COUNT
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- ADDRESS -->
+
+        <article class="overview-block">
+
+          <div class="overview-meta">
+
+            <span class="overview-index">
+              03
+            </span>
+
+            <span class="overview-label">
+              WALLET ADDRESS
+            </span>
+
+          </div>
+
+
+          <div class="overview-value-wrap">
+
+            <div class="address-display-row">
+
+              <span
+                id="walletAddressDisplay"
+                class="address-text"
+              >
+                0x...
+              </span>
+
+              <button
+                type="button"
+                id="copyAddressBtn"
+                class="btn-copy-editorial"
+                title="Copy full address"
+                aria-label="Copy full wallet address"
+              >
+                <span class="copy-text">
+                  COPY
+                </span>
+              </button>
+
+            </div>
+
+
+            <a
+              id="viewEtherscanLink"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link-editorial-action"
+            >
+
+              <span>
+                VIEW ON ETHERSCAN
+              </span>
+
+              <span class="link-arrow">
+                &rarr;
+              </span>
+
+            </a>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- ========================================================
+           TRANSACTIONS
+           ======================================================== -->
+
+      <div class="section-divider-bar">
+
+        <div class="divider-content">
+
+          <span class="divider-tag">
+            03 / LEDGER ACTIVITY
+          </span>
+
+          <div class="divider-line"></div>
+
+          <span class="divider-meta">
+            ON-CHAIN TRANSACTIONS
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <section
+        class="tx-editorial-section"
+        id="transactions"
+        aria-label="Recent Transactions List"
+      >
+
+        <div class="tx-section-header">
+
+          <div>
+
+            <h2 class="tx-editorial-title">
+
+              <span class="tx-title-line">
+                Recent
+              </span>
+
+              <span class="tx-title-italic">
+                Transactions
+              </span>
+
+            </h2>
+
+            <p class="tx-editorial-desc">
+              A record of recent public activity associated with this address.
+            </p>
+
+          </div>
+
+
+          <div class="tx-badge-shell">
+
+            <span
+              id="txCountBadge"
+              class="tx-badge-count"
+            >
+              0 recent
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- DESKTOP TABLE -->
+
+        <div class="tx-table-wrapper">
+
+          <table class="editorial-table">
+
+            <thead>
+
+              <tr>
+
+                <th scope="col">
+                  TX HASH
+                </th>
+
+                <th scope="col">
+                  TYPE
+                </th>
+
+                <th scope="col">
+                  FROM
+                </th>
+
+                <th scope="col">
+                  TO
+                </th>
+
+                <th scope="col">
+                  AMOUNT
+                </th>
+
+                <th scope="col">
+                  DATE / TIME
+                </th>
+
+                <th
+                  scope="col"
+                  style="text-align: right;"
+                >
+                  EXPLORER
+                </th>
+
+              </tr>
+
+            </thead>
+
+            <tbody id="txTableBody">
+              <!-- Populated dynamically by script.js -->
+            </tbody>
+
+          </table>
+
+        </div>
+
+
+        <!-- MOBILE -->
+
+        <div
+          id="txCardsMobile"
+          class="tx-cards-mobile"
+        >
+          <!-- Populated dynamically by script.js -->
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- ================================================================
+       ABOUT / FIELD NOTES
+       ================================================================ -->
+
+  <section
+    id="aboutSection"
+    class="editorial-about"
+  >
+
+
+    <!-- ============================================================
+         01 / OPENING
+         ============================================================ -->
+
+    <div class="about-masthead animate-on-scroll">
+
+      <div class="about-meta">
+
+        <span>
+          ABOUT / FIELD NOTES
+        </span>
+
+        <span>
+          01 — 07
+        </span>
+
+      </div>
+
+
+      <div class="about-rule"></div>
+
+
+      <div class="about-intro-grid">
+
+        <div class="about-index">
+          01
+        </div>
+
+
+        <div class="about-intro-content">
+
+          <p class="about-eyebrow">
+            THE ETHEREUM NETWORK
+          </p>
+
+
+          <h2>
+            THE<br>
+            <em>NETWORK</em>
+          </h2>
+
+
+          <p class="about-lead">
+            Ethereum is not a website.
+            It is a network of computers agreeing on a shared history.
+          </p>
+
+
+          <p class="about-copy">
+            Ethereum is a decentralized blockchain network where
+            participants maintain a shared public ledger. Instead of
+            one central database controlling the information,
+            transactions and state changes are recorded and verified
+            across the network.
+          </p>
+
+
+          <div class="about-data-line">
+
+            <span>
+              ETHEREUM MAINNET
+            </span>
+
+            <span>
+              PUBLIC LEDGER
+            </span>
+
+            <span>
+              24 / 7 NETWORK
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ============================================================
+         02 / THE ADDRESS
+         ============================================================ -->
+
+    <div class="about-spread animate-on-scroll">
+
+      <div class="about-section-number">
+        02
+      </div>
+
+
+      <div class="address-layout">
+
+
+        <div class="address-symbol-wrap">
+
+          <span class="address-symbol">
+            0x
+          </span>
+
+          <span class="address-caption">
+            THE BEGINNING OF AN ETHEREUM ADDRESS
+          </span>
+
+        </div>
+
+
+        <div class="address-content">
+
+          <p class="about-eyebrow">
+            IDENTITY / FORMAT
+          </p>
+
+
+          <h3>
+            THE<br>
+            <em>ADDRESS</em>
+          </h3>
+
+
+          <p class="about-copy">
+            An Ethereum address is a public identifier on the network —
+            a destination for assets and a reference point for activity.
+          </p>
+
+
+          <div class="address-breakdown">
+
+
+            <div class="address-item">
+
+              <strong>
+                0x
+              </strong>
+
+              <span>
+                Ethereum hexadecimal address prefix
+              </span>
+
+            </div>
+
+
+            <div class="address-item">
+
+              <strong>
+                40
+              </strong>
+
+              <span>
+                Hexadecimal characters following the prefix
+              </span>
+
+            </div>
+
+
+            <div class="address-item">
+
+              <strong>
+                160
+              </strong>
+
+              <span>
+                Bits represented by the address
+              </span>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ============================================================
+         03 / READING A WALLET
+         ============================================================ -->
+
+    <div class="about-reading animate-on-scroll">
+
+      <div class="about-section-heading">
+
+        <span>
+          03
+        </span>
+
+
+        <div>
+
+          <p class="about-eyebrow">
+            INTERPRETING ON-CHAIN DATA
+          </p>
+
+          <h3>
+            READING<br>
+            <em>A WALLET</em>
+          </h3>
+
+        </div>
+
+      </div>
+
+
+      <div class="wallet-reading-grid">
+
+
+        <article class="reading-item">
+
+          <span class="reading-number">
+            01
+          </span>
+
+          <h4>
+            BALANCE
+          </h4>
+
+          <p>
+            The amount of ETH currently associated with the address.
+          </p>
+
+        </article>
+
+
+        <article class="reading-item">
+
+          <span class="reading-number">
+            02
+          </span>
+
+          <h4>
+            TRANSACTIONS
+          </h4>
+
+          <p>
+            Recorded activity involving the address across
+            the Ethereum network.
+          </p>
+
+        </article>
+
+
+        <article class="reading-item">
+
+          <span class="reading-number">
+            03
+          </span>
+
+          <h4>
+            TRANSACTION COUNT
+          </h4>
+
+          <p>
+            A numerical view of transaction activity associated
+            with the address.
+          </p>
+
+        </article>
+
+
+        <article class="reading-item">
+
+          <span class="reading-number">
+            04
+          </span>
+
+          <h4>
+            ADDRESS
+          </h4>
+
+          <p>
+            The public identifier used to query and investigate
+            the network.
+          </p>
+
+        </article>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- ============================================================
+         04 / WHY AN EXPLORER
+         ============================================================ -->
+
+    <div class="about-quote-spread animate-on-scroll">
+
+      <div class="quote-number">
+        04
+      </div>
+
+
+      <div>
+
+        <blockquote>
+          THE BLOCKCHAIN IS PUBLIC.<br>
+          <em>THE DATA IS NOT ALWAYS LEGIBLE.</em>
+        </blockquote>
+
+
+        <div class="quote-explanation">
+
+          <p>
+            Ethereum exposes an enormous amount of public information.
+            The challenge is not simply accessing that information,
+            but turning raw blockchain data into something understandable.
+          </p>
+
+
+          <p>
+            A blockchain explorer acts as a lens between the underlying
+            network and the person trying to understand it.
+          </p>
+
+
+          <p>
+            This Ethereum Wallet Explorer exists for exactly that purpose:
+            enter a public address and translate its on-chain activity
+            into readable information.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ============================================================
+         05 / ARCHITECTURE
+         ============================================================ -->
+
+    <div class="about-architecture animate-on-scroll">
+
+      <div class="about-section-heading">
+
+        <span>
+          05
+        </span>
+
+
+        <div>
+
+          <p class="about-eyebrow">
+            SYSTEM ARCHITECTURE
+          </p>
+
+          <h3>
+            UNDER<br>
+            <em>THE SURFACE</em>
+          </h3>
+
+        </div>
+
+      </div>
+
+
+      <div class="architecture-flow">
+
+
+        <div class="architecture-node">
+
+          <span>
+            01
+          </span>
+
+          <strong>
+            YOU
+          </strong>
+
+          <small>
+            USER
+          </small>
+
+        </div>
+
+
+        <div class="architecture-line"></div>
+
+
+        <div class="architecture-node">
+
+          <span>
+            02
+          </span>
+
+          <strong>
+            0x
+          </strong>
+
+          <small>
+            ETHEREUM ADDRESS
+          </small>
+
+        </div>
+
+
+        <div class="architecture-line"></div>
+
+
+        <div class="architecture-node">
+
+          <span>
+            03
+          </span>
+
+          <strong>
+            EXPLORER
+          </strong>
+
+          <small>
+            INTERFACE
+          </small>
+
+        </div>
+
+
+        <div class="architecture-line"></div>
+
+
+        <div class="architecture-node">
+
+          <span>
+            04
+          </span>
+
+          <strong>
+            BACKEND
+          </strong>
+
+          <small>
+            SERVER
+          </small>
+
+        </div>
+
+
+        <div class="architecture-line"></div>
+
+
+        <div class="architecture-node">
+
+          <span>
+            05
+          </span>
+
+          <strong>
+            ETHERSCAN
+          </strong>
+
+          <small>
+            DATA PROVIDER
+          </small>
+
+        </div>
+
+
+        <div class="architecture-line"></div>
+
+
+        <div class="architecture-node">
+
+          <span>
+            06
+          </span>
+
+          <strong>
+            ETHEREUM
+          </strong>
+
+          <small>
+            MAINNET
+          </small>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="architecture-note">
+
+        <p>
+          The interface handles interaction and presentation.
+          The backend acts as the controlled intermediary between
+          the browser and the blockchain data provider.
+        </p>
+
+
+        <p>
+          The Etherscan API credential remains server-side.
+          The browser receives blockchain data without exposing
+          the private service credential.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- ============================================================
+         06 / FIELD NOTES
+         ============================================================ -->
+
+    <div class="about-numbers animate-on-scroll">
+
+      <div class="about-section-number">
+        06
+      </div>
+
+
+      <div class="numbers-grid">
+
+
+        <div class="big-number">
+
+          <strong>
+            01
+          </strong>
+
+          <span>
+            PUBLIC LEDGER
+          </span>
+
+        </div>
+
+
+        <div class="big-number">
+
+          <strong>
+            &infin;
+          </strong>
+
+          <span>
+            OPEN NETWORK
+          </span>
+
+        </div>
+
+
+        <div class="big-number">
+
+          <strong>
+            0x
+          </strong>
+
+          <span>
+            ADDRESS SYSTEM
+          </span>
+
+        </div>
+
+
+        <div class="big-number">
+
+          <strong>
+            24/7
+          </strong>
+
+          <span>
+            NETWORK ACTIVITY
+          </span>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- ============================================================
+         07 / CLOSING
+         ============================================================ -->
+
+    <div class="about-closing animate-on-scroll">
+
+      <div class="closing-index">
+        07
+      </div>
+
+
+      <div class="closing-content">
+
+        <p class="about-eyebrow">
+          FINAL FIELD NOTE
+        </p>
+
+
+        <h3>
+          EVERY ADDRESS<br>
+          <em>LEAVES A TRACE.</em>
+        </h3>
+
+
+        <p class="closing-line">
+          Ethereum makes that trace public.<br>
+          This explorer is simply a lens.
+        </p>
+
+
+        <div class="closing-signature">
+
+          <span>
+            ETHEREUM WALLET EXPLORER
+          </span>
+
+          <span>/</span>
+
+          <span>
+            MAINNET
+          </span>
+
+          <span>/</span>
+
+          <span>
+            FIELD NOTES
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+
+  <footer class="editorial-footer">
+
+    <div class="footer-container">
+
+
+      <div class="footer-top-row">
+
+
+        <div class="footer-brand">
+
+          <div class="footer-title">
+            ETHEREUM WALLET EXPLORER
+          </div>
+
+          <p class="footer-statement">
+            A learning project exploring blockchain data,
+            cryptographic telemetry, Ethereum, and the architecture
+            behind public on-chain information.
+          </p>
+
+        </div>
+
+
+        <nav class="footer-nav-group">
+
+
+          <div class="footer-col">
+
+            <span class="footer-col-title">
+              DATA SOURCE
+            </span>
+
+            <a
+              href="https://etherscan.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              Etherscan
+            </a>
+
+            <a
+              href="https://ethereum.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              Ethereum.org
+            </a>
+
+          </div>
+
+
+          <div class="footer-col">
+
+            <span class="footer-col-title">
+              SYSTEM
+            </span>
+
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              GitHub Repository
+            </a>
+
+            <a
+              href="#hero"
+              class="footer-link"
+            >
+              Back to Top &uarr;
+            </a>
+
+          </div>
+
+
+        </nav>
+
+      </div>
+
+
+      <div class="footer-bottom-row">
+
+        <span class="footer-copy">
+          &copy; 2026 ETHEREUM WALLET EXPLORER
+          &bull; ZERO TRACKING
+          &bull; SERVER-MEDIATED DATA
+        </span>
+
+        <span class="footer-coords">
+          ETHEREUM MAINNET
+          &bull;
+          PROTOCOL 0x01
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ================================================================
+       JAVASCRIPT
+       ================================================================ -->
+
+  <script src="js/script.js"></script>
+
+
+  <!-- ================================================================
+       VISUAL INTERACTION
+       ================================================================ -->
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+      /* ------------------------------------------------------------
+         Sticky Navigation
+         ------------------------------------------------------------ */
+
+      const nav = document.getElementById("topNav");
+
+      window.addEventListener(
+        "scroll",
+        () => {
+
+          if (window.scrollY > 40) {
+            nav.classList.add("nav-scrolled");
+          } else {
+            nav.classList.remove("nav-scrolled");
+          }
+
+        },
+        { passive: true }
+      );
+
+
+      /* ------------------------------------------------------------
+         Reduced Motion
+         ------------------------------------------------------------ */
+
+      const prefersReducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+      /* ------------------------------------------------------------
+         Hero Parallax
+         ------------------------------------------------------------ */
+
+      if (!prefersReducedMotion) {
+
+        const heroHeading =
+          document.querySelector(".hero-heading");
+
+        const bgLayer1 =
+          document.querySelector(".bg-layer-1");
+
+        const bgLayer2 =
+          document.querySelector(".bg-layer-2");
+
+
+        window.addEventListener(
+          "scroll",
+          () => {
+
+            const scrolled = window.scrollY;
+
+
+            if (scrolled < 900) {
+
+              if (heroHeading) {
+
+                heroHeading.style.transform =
+                  `translateY(${scrolled * 0.14}px)`;
+
+                heroHeading.style.opacity =
+                  `${Math.max(
+                    0,
+                    1 - scrolled / 650
+                  )}`;
+
+              }
+
+
+              if (bgLayer1) {
+
+                bgLayer1.style.transform =
+                  `translateY(${scrolled * 0.08}px)`;
+
+              }
+
+
+              if (bgLayer2) {
+
+                bgLayer2.style.transform =
+                  `translateY(${scrolled * -0.05}px)`;
+
+              }
+
+            }
+
+          },
+          { passive: true }
+        );
+
+      }
+
+
+      /* ------------------------------------------------------------
+         Scroll Reveal
+         ------------------------------------------------------------ */
+
+      const revealElements =
+        document.querySelectorAll(
+          ".animate-on-scroll, .section-divider-bar, .overview-block"
+        );
+
+
+      if ("IntersectionObserver" in window) {
+
+        const observer =
+          new IntersectionObserver(
+            (entries) => {
+
+              entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                  entry.target.classList.add("revealed");
+
+                  observer.unobserve(entry.target);
+
+                }
+
+              });
+
+            },
+            {
+              threshold: 0.1
+            }
+          );
+
+
+        revealElements.forEach((element) => {
+
+          observer.observe(element);
+
+        });
+
+      } else {
+
+        revealElements.forEach((element) => {
+
+          element.classList.add("revealed");
+
+        });
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>

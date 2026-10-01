@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="ethChampagne1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F1ECE5"/>
+      <stop offset="100%" stop-color="#D6CBBE"/>
+    </linearGradient>
+    <linearGradient id="ethChampagne2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D6CBBE"/>
+      <stop offset="100%" stop-color="#9A9590"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="4" fill="#0A0909"/>
+  <rect x="0.5" y="0.5" width="31" height="31" rx="3.5" fill="none" stroke="rgba(241,236,229,0.12)"/>
+  <g transform="translate(6, 4) scale(0.625)">
+    <!-- Ethereum Diamond Top Left -->
+    <polygon points="16,0 2,23 16,17" fill="url(#ethChampagne1)" opacity="0.95"/>
+    <!-- Ethereum Diamond Top Right -->
+    <polygon points="16,0 16,17 30,23" fill="url(#ethChampagne2)"/>
+    <!-- Ethereum Diamond Mid Left -->
+    <polygon points="16,19 2,25 16,33" fill="url(#ethChampagne1)" opacity="0.8"/>
+    <!-- Ethereum Diamond Mid Right -->
+    <polygon points="16,19 16,33 30,25" fill="url(#ethChampagne2)" opacity="0.9"/>
+    <!-- Ethereum Diamond Bottom Left -->
+    <polygon points="16,35 2,27 16,46" fill="url(#ethChampagne1)"/>
+    <!-- Ethereum Diamond Bottom Right -->
+    <polygon points="16,35 16,46 30,27" fill="url(#ethChampagne2)"/>
+  </g>
+</svg>
